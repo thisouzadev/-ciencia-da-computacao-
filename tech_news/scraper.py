@@ -1,6 +1,16 @@
+import requests
+import time
+
+
 # Requisito 1
-def fetch(url):
-    """Seu código deve vir aqui"""
+def fetch(url, timeout=1):
+    time.sleep(1)
+    try:
+        response = requests.get(url, timeout=timeout)
+        if response.status_code == 200:
+            return response.text
+    except (requests.HTTPError, requests.ReadTimeout):
+        return None
 
 
 # Requisito 2
